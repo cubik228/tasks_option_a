@@ -1,5 +1,5 @@
 #include <iostream>
-#include "help_func.h"
+#include "func.h"
 #include <vector>
 #include <cmath>
 template <typename T>
