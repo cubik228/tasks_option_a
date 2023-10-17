@@ -17,6 +17,7 @@ int main() {
 
     //std::cout<< sum_after_max_modul_min(arr,size);
     //array_sum(arr_1,arr_2,3,3);
-    std::cout<<zd_11(arr,5);
+    //std::cout<<zd_11(arr,5);
+    energy_dividers(8);
 }
 
