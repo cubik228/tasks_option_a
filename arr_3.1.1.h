@@ -3,108 +3,99 @@
 #include "func.h"
 #include <vector>
 #include <cmath>
-template <typename T>
-int sum_before_min(T arr, int size) {///(3.1.1)  1
-    int min = *(arr + 0);
-    int sum = 0;
-    for (int i = 0; i < size; i++) {
-        if (*(arr + i) < min) {
-            min = *(arr + i);
+template <typename Iterator>
+double sum_before_min(Iterator first, Iterator last,double sum, double min) {///(3.1.1)  1
+    for (; first != last; first++) {
+        if (*first > min) {
+            min = *first;
             break;
         }
-        sum += *(arr + i);
+        sum += *first;
     }
     return sum;
 }
-template <typename T>
-int sum_before_max_v1(T arr, int size) {///(3.1.1)  2
-    int max = *(arr + 0);
-    int sum = 0;
-    for (int i = 0; i < size; i++) {
-        if (*(arr + i) > max) {
-            max = *(arr + i);
+template <typename Iterator>
+double sum_before_max_v1(Iterator first, Iterator last , double sum, double max ) {///(3.1.1)  2
+    for (; first != last; first++) {
+        if (*first < max) {
+            max = *first;
             break;
         }
-        sum += *(arr + i);
+        sum += *first;
     }
     return sum;
 }
-template <typename T>
-double sum_between_min_max(T arr, int size) {///(3.1.1)  3
-    int min = *(arr + 0);
-    int max = *(arr + 0);
-    for (int i = 1; i < size; i++) {
-        if (*(arr + i) < min) {
-            min = *(arr + i);
+template <typename Iterator>
+double sum_between_min_max(Iterator first, Iterator last, double max, double min, double sum) {
+    for (; first != last; first++) {
+        if (*first < min) {
+            min = *first;
         }
-        if (*(arr + i) > max) {
-            max = *(arr + i);
+        if (*first > max) {
+            max = *first;
         }
     }
-    double sum = 0;
-    for (int i = 0; i <= size; i++) {
-        if (*(arr + i) > min && *(arr + i) < max) {
-            sum += *(arr + i);
+    for (Iterator it = first; it != last; it++)
+    {
+        if (*it > min && *it < max) {
+            std::cout << *it << " ";
+            sum += *it;
         }
     }
     return sum;
 }
-template <typename T>
-double sum_after_max(T arr, int size) {///(3.1.1)  4
-    int max_index = 0;
-    for (int i = 1; i < size; i++) {
-        if (*(arr + i) > *(arr + max_index)) {
-            max_index = i;
+
+template <typename Iterator>
+double sum_after_max(Iterator first, Iterator last,int count, double sum, int max_index ) {///(3.1.1)  4
+    for (;first != last; first++, count++) {
+        if (*first > *(first + max_index)) {
+            max_index = count;
         }
+        sum += *first;
     }
-    double sum = 0;
-    for (int i = max_index + 1; i < size; i++) {
-        sum += *(arr + i);
+    for (; max_index + 1 < last; (max_index + 1)++) {
+        sum += *first;
     }
     return sum;
 }
-template <typename T>
-double sum_before_max_v2(T arr, int size) {///(3.1.1)  5
-    int max_index = 0;
-    for (int i = 1; i < size; i++) {
-        if (*(arr + i) > *(arr + max_index)) {
-            max_index = i;
+template <typename Iterator>
+double sum_before_max_v2(Iterator first, Iterator last, int max_index,int count, double sum ) {///(3.1.1)  5
+    for (;first != last; first++, count++) {
+        if (*first > *(first + max_index)) {
+            max_index = count;
         }
     }
-    double sum = 0;
-    for (int i = 0; i < max_index; i++) {
-        sum += *(arr + i);
+    for (;first != last; first++) {
+        sum += *first;
     }
     return sum;
 }
-template <typename T>
-double sum_after_max_v2(T arr, int size) {///(3.1.1)  6
-    int max_index = 0;
-    for (int i = 1; i < size; i++) {
-        if (*(arr + i) > (*arr + max_index)) {
-            max_index = i;
+template <typename Iterator>
+double sum_after_max_v2(Iterator first, Iterator last, int max_index ,int count, double sum ) {///(3.1.1)  6
+   
+    for (;first != last; first++, count++) {
+        if (*first > (*first + max_index)) {
+            max_index = count;
         }
     }
-    double sum = 0;
-    for (int i = max_index + 1; i < size; i++) {
-        sum += *(arr + i);
+    for (; max_index + 1 < last; (max_index + 1)++) {
+        sum += *first;
     }
     return sum;
 }
-template <typename T>
-double sum_after_max_modul_max(T arr, int size) {///(3.1.1)  7
-    int max_index = 0;
-    for (int i = 1; i < size; i++) {
-        if (std::abs(*(arr + i)) > std::abs(*(arr + max_index))) {
-            max_index = i;
+template <typename Iterator>
+double sum_after_max_modul_max(Iterator first, Iterator last, int max_index, int count, double sum) {///(3.1.1)  7
+    for (;first != last; first++, count++) {
+        if (std::abs(*first) > std::abs(*(first + max_index))) {
+            max_index = count;
         }
     }
-    double sum = 0;
-    for (int i = max_index + 1; i < size; i++) {
-        sum += *(arr + i);
+    for (; max_index + 1 < last; (max_index + 1)++) {
+        sum += *first;
     }
     return sum;
 }
+
 template <typename T>
 int sum_after_max_modul_min(T arr, int size) {///(3.1.1)  8
     int max_index = 0;
@@ -119,6 +110,7 @@ int sum_after_max_modul_min(T arr, int size) {///(3.1.1)  8
     }
     return sum;
 }
+
 template<typename T>
 double sum_before_min_abs(T arr, int size) {///(3.1.1)  9
     int min_abs = 0;
@@ -133,6 +125,7 @@ double sum_before_min_abs(T arr, int size) {///(3.1.1)  9
     }
     return sum;
 }
+
 template<typename T>
 double sum_between_min_max(std::vector<T> arr) {///(3.1.1)  10
 
