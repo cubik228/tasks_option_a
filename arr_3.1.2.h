@@ -6,7 +6,7 @@
 template<typename Iterator>
 int print_powers_of_numbers(Iterator first, Iterator last,int value, int count) {///(3.1.2) 1 2 3
     for (; first != last; first++) {
-        if (fmod(log(*first) / log(value), 1) == 0) {
+        if (std::fmod(std::log(*first) / std::log(value), 1) == 0) {
             std::cout << *first << " ";
             ++count;
         }
@@ -23,63 +23,65 @@ int checking_indexes_on_function(Iterotor first, Iterotor last, bool (*func)(int
     }
     return count;
 }
-template <typename Iterotor>
-double is_sum_array (Iterotor arr_first,Iterotor arr_second, Iterotor size_arr_first, Iterotor size_arr_second,double sum) {///(3.1.2) 7
-    for (int i = 0; i < size_arr_second; i++) {
-        sum += arr_first[arr_second[i]];
+template <typename Iterator>
+double is_sum_array(Iterator arr_first, Iterator arr_second, Iterator size_arr_first, Iterator size_arr_second, double sum) {///(3.1.2)  7
+    for (; arr_second < size_arr_second; arr_second++) {
+        if (*arr_second >= *size_arr_first) {
+            return 0;
+        }
+        sum += arr_first[*arr_second];
     }
-    return sum;///todo
+    return sum;
 }
-template <typename T>
-T sum_of_different_indices(std::vector<T> arr_first, std::vector<T> arr_second, int size_arr_first, int size_arr_second) {///(3.1.2) 8
-    T sum = 0;
-    for (int i = 0; i < size_arr_first; i++) {
+template <typename Iterotor>
+double sum_of_different_indices(Iterotor arr_first, Iterotor arr_second, Iterotor size_arr_first, Iterotor size_arr_second, double sum,int count) {///(3.1.2)  8
+    for (; arr_first < size_arr_first; arr_first++, count++) {
         bool is_index_present = false;
-        for (int j = 0; j < size_arr_second; j++) {
-            if (i == *(arr_second+j)) {
+        for (;arr_second < size_arr_second; arr_second++) {
+            if (count == *arr_second) {
                 is_index_present = true;
                 break;
             }
         }
         if (!is_index_present) {
-            sum += *(arr_first +i);
+            sum += *arr_first;
         }
     }
     return sum;
 }
-template <typename T>
-T find_min(std::vector<T> arr_first, std::vector<T> arr_second) {///(3.1.2) 9
-    std::sort(arr_second.begin(), arr_second.end());
-    for (auto i : arr_first) {
-        if (!std::binary_search(arr_second.begin(), arr_second.end(), i)) {
-            return i;
+template <typename Iterotor>
+int find_smallest(Iterotor arr_first, Iterotor arr_second, Iterotor size_arr_first, Iterotor size_arr_second, int smallest) {///(3.1.2)  9
+    for (; arr_first < size_arr_first; arr_first++) {
+        bool found = false;
+        for (; arr_second < size_arr_second; arr_second++) {
+            if (*arr_first == *arr_second) {
+                found = true;
+                break;
+            }
+        }
+        if (!found && *arr_first < smallest) {
+            smallest = *arr_first;
         }
     }
-    return -1;
+    return smallest;
 }
 template <typename Iterotor>
-auto find_max(Iterotor arr_first, Iterotor arr_second,int max) {///(3.1.2) 10
-    for (; first != last; first++) {
-        if (*first == max) {
-            break;
-        }
-        sum += *first;
-    }
-    for (auto item : arr_second) {
-        if (item == max) {
-            return max;
-        }
-    }
-    return -1;
-}
-template <typename Iterotor>
-int zd_11(Iterotor first ,Iterotor last,int count) {///(3.1.2) 11
-    for (; first < last; first++) {
-        for (int j = i + 1; j < last; j++) {
-            if (*first == -arr[j]) {
-                count++;///todo
+int find_largest(Iterotor arr_first, Iterotor arr_second, Iterotor size_arr_first, Iterotor size_arr_secondint,int largest) {///(3.1.2)  10
+    for (;arr_first < size_arr_first; arr_first++) {
+        for (; arr_second < size_arr_secondint; arr_second++) {
+            if (*arr_first == *arr_second && *arr_first > largest) {
+                largest = *arr_first;
+                break;
             }
         }
     }
-    return count;
+    return largest;
+}
+template <typename Iterotor>
+int count_inversions(Iterotor first, Iterotor last,int inversions,int count,int result) {///(3.1.2)  11
+    for (; first < last; first++, count++)
+        for (; count + 1 < last; (count + 1)++)
+            if (*first > *(first + (count + 1)))
+                result++;
+   return result;
 }
