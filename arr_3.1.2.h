@@ -3,35 +3,32 @@
 #include <vector>
 #include <cmath>
 #include <algorithm>
-template<typename T>
-int print_powers_of_numbers(T arr, int size,int value) {///(3.1.2) 1 2 3
-    int count = 0;
-    for (int i = 0; i < size; ++i) {
-        if (fmod(log(*(arr + i)) / log(value), 1) == 0) {
-            std::cout << *(arr + i) << " ";
+template<typename Iterator>
+int print_powers_of_numbers(Iterator first, Iterator last,int value, int count) {///(3.1.2) 1 2 3
+    for (; first != last; first++) {
+        if (fmod(log(*first) / log(value), 1) == 0) {
+            std::cout << *first << " ";
             ++count;
         }
     }
     return count;
 }
-template <typename T>
-int checking_indexes_on_function(T arr, int size, bool (*func)(int)) {///(3.1.2) 5 4 6
-    int count = 0;
-    for (int i = 0; i < size; i++) {
-        if (func(i))
-            std::cout << *(arr + i) << std::endl;
-        if (func(*(arr + i)))
+template <typename Iterotor>
+int checking_indexes_on_function(Iterotor first, Iterotor last, bool (*func)(int), int count) {///(3.1.2) 5 4 6
+    for (; first < last; first++,count++) {
+        if (func(count))
+            std::cout << *first << std::endl;
+        if (func(*first))
             count++;
     }
     return count;
 }
-template <typename T>
-T is_sum_array (std::vector<T> arr_first, std::vector<T> arr_second,int size_arr_first,int size_arr_second) {///(3.1.2) 7
-    T sum = 0;
+template <typename Iterotor>
+double is_sum_array (Iterotor arr_first,Iterotor arr_second, Iterotor size_arr_first, Iterotor size_arr_second,double sum) {///(3.1.2) 7
     for (int i = 0; i < size_arr_second; i++) {
         sum += arr_first[arr_second[i]];
     }
-    return sum;
+    return sum;///todo
 }
 template <typename T>
 T sum_of_different_indices(std::vector<T> arr_first, std::vector<T> arr_second, int size_arr_first, int size_arr_second) {///(3.1.2) 8
@@ -60,9 +57,14 @@ T find_min(std::vector<T> arr_first, std::vector<T> arr_second) {///(3.1.2) 9
     }
     return -1;
 }
-template <typename T>
-T find_max(std::vector<T> arr_first, std::vector<T> arr_second) {///(3.1.2) 10
-    T max = *std::max_element(arr_first.begin(), arr_first.end());
+template <typename Iterotor>
+auto find_max(Iterotor arr_first, Iterotor arr_second,int max) {///(3.1.2) 10
+    for (; first != last; first++) {
+        if (*first == max) {
+            break;
+        }
+        sum += *first;
+    }
     for (auto item : arr_second) {
         if (item == max) {
             return max;
@@ -70,15 +72,14 @@ T find_max(std::vector<T> arr_first, std::vector<T> arr_second) {///(3.1.2) 10
     }
     return -1;
 }
-template<typename T>
-int zd_11(T arr ,int size) {///(3.1.2) 11
-    int cnt = 0;
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = i + 1; j < size; j++) {
-            if (arr[i] == -arr[j]) {
-                cnt++;
+template <typename Iterotor>
+int zd_11(Iterotor first ,Iterotor last,int count) {///(3.1.2) 11
+    for (; first < last; first++) {
+        for (int j = i + 1; j < last; j++) {
+            if (*first == -arr[j]) {
+                count++;///todo
             }
         }
     }
-    return cnt;
+    return count;
 }
