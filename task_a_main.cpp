@@ -2,7 +2,7 @@
 #include "arr_and_pointer.h"
 #include "func.h"
 #include <vector>
-#include "loop.h"
+#include "loops/loop.h"
 
 int main() {
     const int size = 5;
@@ -28,5 +28,8 @@ int main() {
     //array_sum(arr_1,arr_2,3,3);
     //std::cout<<zd_11(arr,5);
     //energy_dividers(8);
+
+
+    zd_1(arr,arr2,arr + 8,arr2 + 8,0,0);
 }
 
