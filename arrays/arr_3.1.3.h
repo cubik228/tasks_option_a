@@ -13,11 +13,11 @@ void zd_1(Iterator arr_first, Iterator arr_second, Iterator size_first, Iterator
     const int size3 = size1 + size2;
     int arr3[size3];
 
-    for (int i = 0; i < size1; i++) {
+    for (int i = 0; i < size2; i++) {
         arr3[i] = arr1[i];
     }
 
-    for (int i = 0; i < size2; i++) {
+    for (int i = 0; i < size3; i++) {
         arr3[size1 + i] = arr2[i];
     }
 

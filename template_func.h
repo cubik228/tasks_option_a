@@ -1,9 +1,10 @@
 #pragma once
-template<class T, class UnaryOperation>
-T template_with_return(T start, T end, T result, UnaryOperation func) {
-	for (; start <= end; ++start)
+#include <iostream>
+template<class Itertor, class UnaryOperation,typename T>
+T template_with_return(Itertor first, Itertor last, T result, UnaryOperation func) {
+	for (; first != last; ++first)
 	{
-		result = func(result, start);
+		result = func(*first, result);
 	}
 	return result;
 }
@@ -13,4 +14,12 @@ void for_each(Iterator first, Iterator last, UnaryOperation up) {
 	{
 		up(*first);
 	}
+}
+template< typename T, class Function>
+void  task_for(T start, T end, int result, int help_value, Function func) {
+	for (; start <= end; start++)
+	{
+		func(start, end, result);
+	}
+	
 }

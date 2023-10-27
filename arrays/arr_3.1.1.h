@@ -3,16 +3,34 @@
 #include "func.h"
 #include <vector>
 #include <cmath>
+#include "template_func.h"
 template <typename Iterator>
-double sum_before_min(Iterator first, Iterator last, double sum, double min) {///(3.1.1)  1
-    for (; first != last; first++) {
-        if (*first == min) {
-            break;
+void sum_before_min(Iterator first, Iterator last, double sum, double min) {///(3.1.1)  1
+    //for (; first != last; first++) {
+    //    if (min < *first) {
+    //        min = *first;
+    //        
+    //    }
+    //    sum += *first;
+    //    if (*first < min) {
+    //        break;
+    //    }
+    //}//todo
+    //return sum;
+    for_each(first, last, [&min,&sum](int value) {
+        //std::cout << value;
+        if (min < value) {
+            min = value;
         }
-        sum += *first;
-    }
-    return sum;
+        if (value > min) {
+            sum += value;
+        }
+        std::cout<<sum <<" ";
+            
+    });
+   
 }
+
 template <typename Iterator>
 double sum_before_max_v1(Iterator first, Iterator last, double sum, double max) {///(3.1.1)  2
     for (; first != last; first++) {

@@ -1,39 +1,30 @@
 #pragma once
 #include <vector>
 #include "func.h"
-template<class Iterator, class T>
-T find(Iterator first, Iterator last, T value) {
-	for (; first != last; ++first)
-	{
-		if (*first == value) {
-			return first;
-		}
-	}
-	return last;
+void energy_dividers(int start,int end,int count) {///(2.3) 1 
+	task_for(start, end, count, 1, [&count](int value, int v, int b) {
+		count++;
+		if (value % count == 0) {
+			std::cout << count << " ";
+		};
+	});
 }
-void energy_dividers(int value) {///(2.3) 1 
-	for (int i = 1; i <= value; i++)
-	{
-		if (value % i == 0) {
-			std::cout << i<<" ";
-		}
-	}
+void common_divisors(int first_value, int second_value , int count) {///(2.3) 2
+	task_for(first_value, second_value, count, 1, [&count](int first_value, int second_value, int b) {
+		count++;
+		if (first_value % count == 0 && second_value % count == 0) {
+			std::cout << count << " ";
+		};
+	});
 }
-void common_divisors(int first_value, int second_value) {///(2.3) 2
-	for (int i = 1; i <= std::min(first_value, second_value); ++i) {
-		if (first_value % i == 0 && second_value % i == 0) {
-			std::cout << i << " ";
-		}
-	}
+void common_multiples(int first_value, int second_value ,int count) {///(2.3) 3
+	task_for(first_value, second_value, count, 1, [&count](int first_value, int second_value, int b) {
+		count++;
+		if ((count % first_value == 0) && (count % second_value == 0)) {
+			std::cout << count << " ";
+		};
+	});
 }
-void common_multiples(int first_value, int second_value) {///(2.3) 3
-	for (int i = 1; i <= first_value * second_value; ++i) {
-		if ((i % first_value == 0) && (i % second_value == 0)) {
-			std::cout << i << " ";
-		}
-	}
-}
-
 int lcm(int first_value, int second_value) {///(2.3) 5
 	return first_value * second_value / gcd(first_value, second_value);
 }
@@ -41,10 +32,10 @@ int gcd_upgrade(int a, int b, int c) {///(2.3) 6
 	return gcd(gcd(a, b), c);
 }
 template<typename T>
-T sum_of_common_divisors(T first_value, T second_value,T sum) {///(2.3) 7
-	for (int i = 1; i <= std::min(first_value, second_value); ++i) {
-		if (first_value % i == 0 && second_value % i == 0) {
-			sum += i;
+T sum_of_common_divisors(T first_value, T second_value, T sum, int count) {
+	for (; count <= std::min(first_value, second_value); ++count) {
+		if (first_value % count == 0 && second_value % count == 0) {
+			sum += count;
 		}
 	}
 	return sum;
@@ -62,42 +53,34 @@ int max_sum_of_divisors(int first_value, int second_value) {///(2.3) 8
 	}
 	return max_num;
 }
-void get_coprimes(int first_value, int second_value) {
-	for (int i = 1; i < second_value; ++i) {
-		if (is_coprime(first_value, i)) {
-			std::cout << i << " ";
+void get_coprimes(int first_value, int second_value,int count) {///(2.3) 9
+	for (; count < second_value; ++count) {
+		if (is_coprime(first_value, count)) {
+			std::cout << count << " ";
 		}
 	}
 }
-int max_sum_of_divisors_v2(int first_value, int second_value) {///(2.3) 10
-	int max_num = std::max(first_value, second_value);
-	int max_sum = sum_of_divisors(first_value);
-	for (int i = first_value + 1; i <= second_value; ++i) {
-		int current_sum = sum_of_divisors(i);
-		if (current_sum > max_sum) {
-			max_num = i;
-			max_sum = current_sum;
+int max_sum_of_divisors_v2(int first_value, int second_value, int max_num, int max_sum, int count) {///(2.3) 10
+	for (count = first_value + 1; count <= second_value; ++count) {
+		if (sum_of_divisors(count) > sum_of_divisors(first_value)) {
+			max_num = count;
+			max_sum = sum_of_divisors(count);
 		}
 	}
 	return max_num;
 }
-
-void get_perfect_numbers(int value) {///(2.3) 11
-	for (int i = 1; i < value; ++i) {
-		int sum = sum_of_divisors(i);
-		if (sum == i) {
-			std::cout << i << " ";
+void get_perfect_numbers(int value,int sum,int count) {///(2.3) 11
+	for (; count < value; ++count) {
+		if (sum_of_divisors(count) == count) {
+			std::cout << count << " ";
 		}
 	}
 }
-
 void get_friendly_numbers(int n, int m) {///(2.3) 12
-	for (int i = n; i <= m; ++i) {
-		int sum1 = sum_of_divisors(i);
-		if (sum1 > i) {
-			int sum2 = sum_of_divisors(sum1);
-			if (sum2 == i) {
-				std::cout << "(" << i << ", " << sum1 << ") ";
+	for (; n <= m; ++n) {
+		if (sum_of_divisors(n) > n) {
+			if (sum_of_divisors(sum_of_divisors(n)) == n) {
+				std::cout << "(" << n << ", " << sum_of_divisors(n) << ") ";
 			}
 		}
 	}
