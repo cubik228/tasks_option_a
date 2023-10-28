@@ -5,30 +5,17 @@
 #include <cmath>
 #include "template_func.h"
 template <typename Iterator>
-void sum_before_min(Iterator first, Iterator last, double sum, double min) {///(3.1.1)  1
-    //for (; first != last; first++) {
-    //    if (min < *first) {
-    //        min = *first;
-    //        
-    //    }
-    //    sum += *first;
-    //    if (*first < min) {
-    //        break;
-    //    }
-    //}//todo
-    //return sum;
-    for_each(first, last, [&min,&sum](int value) {
-        //std::cout << value;
-        if (min < value) {
-            min = value;
+double sum_before_min(Iterator first, Iterator last, double sum, double min) {///(3.1.1)  1
+    for (; first != last; first++) {
+        if (min < *first) {
+            min = *first;
         }
-        if (value > min) {
-            sum += value;
+        sum += *first;
+        if (*first < min) {
+            break;
         }
-        std::cout<<sum <<" ";
-            
-    });
-   
+    }
+    return sum;
 }
 
 template <typename Iterator>
@@ -59,20 +46,20 @@ double sum_between_min_max(Iterator first, Iterator last, double max, double min
     }
     return sum;
 }
-template <typename Iterator>
-double sum_after_max(Iterator first, Iterator last, int count, double sum, int max_index) {///(3.1.1)  4
-    int min_index = max_index + 1;
-    for (;first != last; first++, count++) {
-        if (*first < *(first + min_index)) {
-            min_index = count + 1;
-        }
-        sum += *first;
-    }
-    for (; min_index < count; min_index++) {
-        sum -= *(first - min_index);
-    }
-    return sum;
-}
+//template <typename iterator>
+//double sum_before_min(iterator first, iterator last) {///(3.1.1)  4
+//    double sum = 0;
+//    for (; first != last; first++) {
+//        if (min < *first) {
+//            min = *first;
+//        }
+//    }
+//    for (iterator it = first; it != min; ++it) {
+//
+//        sum += *it;
+//    }
+//    return sum;
+//}
 template <typename Iterator>
 double sum_before_max_v2(Iterator first, Iterator last, int max_index, int count, double sum) {///(3.1.1)  5
     for (; first != last; ++first, ++count) {

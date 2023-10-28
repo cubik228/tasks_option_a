@@ -20,7 +20,7 @@ int main() {
         arr_2[i] = i;
     }
 
-    //sum_before_min(arr,arr + 5, 0,0);
+    //std::cout<<sum_before_min(arr,arr + 5, 0,0);
     //std::cout<<sum_before_max_v1(arr, arr + 5, 0, *arr);
     //std::cout << sum_between_min_max(arr,arr + 5, *arr, *arr,0);
     //std::cout<< print_powers_of_numbers(arr, arr + 5, 2, 0);
@@ -30,15 +30,30 @@ int main() {
     //std::cout<< sum_after_max_modul_min(arr,size);
     //array_sum(arr_1,arr_2,3,3);
     //std::cout<<zd_11(arr,5);
-    //energy_dividers(8);
-
-
+    //energy_dividers(1,8,2);
+    //common_multiples
+    //std::cout<<max_sum_of_divisors_v2(1,8,0,0,0);
+    //std::cout<<max_sum_of_divisors_v2(1,8,0,0,0);
+    //std::cout<<count_division(1,5,4,0);
     //zd_1(arr,arr2,arr + 8,arr2 + 8,0,0);
     //energy_dividers(1,20,0);
     //common_divisors(3,6,0);
-    //common_multiples(1,6,0);
+    //common_multiples(3,6,0);
     //std::cout<<sum_of_common_divisors(3,5,0,1);
     //std::cout<<max_sum_of_divisors_v2(5,10,0,0,0);
-    get_perfect_numbers(5,0,1);
+    //get_perfect_numbers(5,0,1);
+    //std::cout<<sum_before_min(arr,arr + 8,0,0);
+    //std::cout<< sum_before_min(arr,arr + 8,0,0);
+    //std::cout<<sum_before_max_v1(arr,arr +8,0,0);
+    //sum_before_min();
+    //std::cout<<gcd(7, 11);
+    //std::cout<<max_sum_of_divisors(2,7,0);
+    //energy_dividers(1,6,2);
+    //common_multiples(1,6,2);
+    //common_divisors(1,5,0);
+    //lcm(2,3);
+    //std::cout<<is_coprime(3,6);
+    //std::cout<<max_sum_of_divisors_v2(1,2,0,0,0);
+    //std::cout<<find_the_first_natural_numbers(0,126,0,0);
 }
 

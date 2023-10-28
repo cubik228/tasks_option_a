@@ -17,7 +17,8 @@ void print_array(T(&arr)[size]) {
 }
 template<typename T>
 bool is_prime(T value) {
-    if (value <= 1) return false;
+    if (value <= 1) 
+        return false;
     for (int i = 2; i <= std::sqrt(value); i++) {
         if (value % i == 0) return false;
     }
@@ -46,6 +47,15 @@ int sum_of_divisors(int n) {
         }
     }
     return sum;
+}
+int count_division(int start,int end ,int value,int count) {
+    for (; start != end; start++)
+    {
+        if (value % start == 0) {
+            count++;
+        }
+    }
+    return count;
 }
 int gcd(int first_value, int second_value) {///(2.3) 4 loop
     while (second_value != 0) {
