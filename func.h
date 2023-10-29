@@ -76,24 +76,19 @@ int sum_of_digits(int n) {
     }
     return sum;
 }
-bool is_divisible(int n) {
+bool is_divisible(int n,int count) {
     int temp = n;
     while (temp > 0) {
         int digit = temp % 10;
         if (digit != 0 && n % digit == 0) {
-            return true;
+            count++;
         }
         temp /= 10;
     }
-    return false;
-}
-bool is_reversible(int a, int b,int reverse_product) {
-    int product = a * b;
-    while (product > 0) {
-        reverse_product = reverse_product * 10 + product % 10;
-        product /= 10;
+    if (count >= count_number_size(n)) {
+        return true;
     }
-    return a * (reverse_product / 10) == b * (reverse_product % 10);
+    return false;
 }
 bool is_increasing(int n) {
     int last_digit = n % 10;
@@ -101,6 +96,19 @@ bool is_increasing(int n) {
     while (n > 0) {
         int digit = n % 10;
         if (digit >= last_digit) {
+            return false;
+        }
+        last_digit = digit;
+        n /= 10;
+    }
+    return true;
+}
+bool is_not_increasing(int n) {
+    int last_digit = n % 10;
+    n /= 10;
+    while (n > 0) {
+        int digit = n % 10;
+        if (digit <= last_digit) {
             return false;
         }
         last_digit = digit;

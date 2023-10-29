@@ -63,6 +63,7 @@ void get_coprimes(T first_value, T second_value, int count) {///(2.3) 9
 		}
 	}
 }
+////////////////////
 template<typename T>
 T max_sum_of_divisors_v2(T first_value, T second_value, T max_num, T max_sum, int count) {///(2.3) 10
 	for (; first_value < second_value; ++first_value) {
