@@ -12,7 +12,7 @@ template<class Iterator, class UnaryOperation>
 void for_each(Iterator first, Iterator last, UnaryOperation up) {
 	for (; first != last; ++first)
 	{
-		up(*first);
+		up(first);
 	}
 }
 template< typename T, class Function>

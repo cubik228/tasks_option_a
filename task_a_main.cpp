@@ -18,7 +18,11 @@ int main() {
         arr_1[i] = i;
         arr_2[i] = i;
     }
-    four_digit_number_divisible_by_the_product_of_numbers(10,10);
+    //increasing_numbers(23);
+    //natural_numbers_smaller_value(25,1000);
+    //three_digit_numbers_in_decimal_notations_no_identical_digits(1,1,1);
+    find_numbers(26);
+    //four_digit_number_divisible_by_the_product_of_numbers(10,10);
     //count_ways(5,0);
     //std::cout<<count_numbers(15,0);
     //std::cout<<sum_before_min(arr,arr + 5, 0,0);

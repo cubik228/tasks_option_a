@@ -68,3 +68,43 @@ int gcd(int first_value, int second_value) {///(2.3) 4 loop
 bool is_coprime(int n, int m) {///(2.1) 3
     return gcd(n, m) == 1;
 }
+int sum_of_digits(int n) {
+    int sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    return sum;
+}
+bool is_divisible(int n) {
+    int temp = n;
+    while (temp > 0) {
+        int digit = temp % 10;
+        if (digit != 0 && n % digit == 0) {
+            return true;
+        }
+        temp /= 10;
+    }
+    return false;
+}
+bool is_reversible(int a, int b,int reverse_product) {
+    int product = a * b;
+    while (product > 0) {
+        reverse_product = reverse_product * 10 + product % 10;
+        product /= 10;
+    }
+    return a * (reverse_product / 10) == b * (reverse_product % 10);
+}
+bool is_increasing(int n) {
+    int last_digit = n % 10;
+    n /= 10;
+    while (n > 0) {
+        int digit = n % 10;
+        if (digit >= last_digit) {
+            return false;
+        }
+        last_digit = digit;
+        n /= 10;
+    }
+    return true;
+}
