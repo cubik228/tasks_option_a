@@ -3,7 +3,6 @@
 #include "func.h"
 #include <vector>
 #include "loops/loop.h"
-#include "template_func.h"
 
 
 int main() {
@@ -19,7 +18,9 @@ int main() {
         arr_1[i] = i;
         arr_2[i] = i;
     }
-
+    four_digit_number_divisible_by_the_product_of_numbers(10,10);
+    //count_ways(5,0);
+    //std::cout<<count_numbers(15,0);
     //std::cout<<sum_before_min(arr,arr + 5, 0,0);
     //std::cout<<sum_before_max_v1(arr, arr + 5, 0, *arr);
     //std::cout << sum_between_min_max(arr,arr + 5, *arr, *arr,0);
@@ -55,5 +56,10 @@ int main() {
     //std::cout<<is_coprime(3,6);
     //std::cout<<max_sum_of_divisors_v2(1,2,0,0,0);
     //std::cout<<find_the_first_natural_numbers(0,126,0,0);
+    //std::cout<<find_sum_of_number_are_powers_5(1,10,0,4,0,7);
+    //sum_of_vaues_that_divisible_by_two_values(1,5,0,2,4);
+    //sum_of_vaues_that_divisible_by_value(1,5,0,3);
+    //find_the_first_natural_numbers(1,5,0,0);
+    //calculation_of_conditional_function_at_points(1,10,2,5,4,0);
 }
 

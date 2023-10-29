@@ -39,7 +39,7 @@ bool is_fibonacci(T value) {
     }
     return (b == value);
 }
-int sum_of_divisors(int n) {
+int sum_of_divisors(int n) {///(2.1) 4
     int sum = 0;
     for (int i = 1; i <= n; ++i) {
         if (n % i == 0) {
@@ -48,7 +48,7 @@ int sum_of_divisors(int n) {
     }
     return sum;
 }
-int count_division(int start,int end ,int value,int count) {
+int count_division(int start,int end ,int value,int count) {///(2.1) 2
     for (; start != end; start++)
     {
         if (value % start == 0) {
@@ -65,6 +65,6 @@ int gcd(int first_value, int second_value) {///(2.3) 4 loop
     }
     return first_value;
 }
-bool is_coprime(int n, int m) {
+bool is_coprime(int n, int m) {///(2.1) 3
     return gcd(n, m) == 1;
 }

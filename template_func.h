@@ -4,7 +4,7 @@ template<class Itertor, class UnaryOperation,typename T>
 T template_with_return(Itertor first, Itertor last, T result, UnaryOperation func) {
 	for (; first != last; ++first)
 	{
-		result = func(*first, result);
+		result = func(first, result);
 	}
 	return result;
 }
