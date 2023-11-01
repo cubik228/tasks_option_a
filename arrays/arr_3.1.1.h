@@ -62,9 +62,10 @@ double sum_between_min_max(Iterator first, Iterator last, double max, double min
 //}
 template <typename Iterator>
 double sum_before_max_v2(Iterator first, Iterator last, int max_index, int count, double sum) {///(3.1.1)  5
-    for (; first != last; ++first, ++count) {
-        if (*first > *(first + max_index)) {
-            max_index = count;
+    for (; first != last; ++first) {
+        if (*first >  max_index) {
+            ++count;
+            max_index = *first;
         }
     }
     for (; first != last; ++first, ++count) {
