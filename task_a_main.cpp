@@ -6,6 +6,7 @@
 
 
 int main() {
+    std::cout<<Fib(6);
     setlocale(LC_ALL, "ru");
     const int size = 5;
     int count = 0;
@@ -19,8 +20,10 @@ int main() {
         arr_1[i] = i;
         arr_2[i] = i;
     }
+   
+    //get_first_100_prime_numbers(1,100,0,0);
     //get_first_100_prim444e_numbers(1,0,0);
-    get_first_100_prime_numbers(1,100,0,0);
+   // get_first_100_prime_numbers(1,100,0,0);
     //get_all_prime_numbers_of_value(1,8,0);
     ///std::cout<<count_numbers(100,120,4,0);
     ///////////count_ways(5, count,1,5,10,15);
