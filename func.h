@@ -159,3 +159,44 @@ double sin_taylor(double x, int n) {
     }
     return result;
 }
+template<class T>
+bool is_fib(T value, T fib_0, T fib_1, T fib_2, T begin) {
+    for (; begin != value; ++begin)
+    {
+        fib_0 = fib_1;
+        fib_1 = fib_2;
+        fib_2 = fib_1 + fib_0;
+        if (fib_2 == value)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+template<class T>
+int double_fact(T begin, T value, T product) {
+    if (value % 2 == 0)
+        begin = 2;
+    else
+        begin = 1;
+    for (; begin <= value; begin += 2)
+    {
+        product *= begin;
+    }
+    return product;
+}
+template <typename T>
+T calculateProduct_product(T begin, T end, T product, T index, T sum) {
+    for (; begin <= end; begin += 2) {
+        sum = 1;
+        for (int j = 0; j < index; j++) {
+            int value;
+            std::cout << "¬ведите x" << begin + j << ": ";
+            std::cin >> value;
+            sum *= value;
+        }
+        product += sum;
+        index++;
+    }
+    return product;
+}
