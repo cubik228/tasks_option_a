@@ -6,7 +6,6 @@
 
 
 int main() {
-    std::cout<<Fib(6);
     setlocale(LC_ALL, "ru");
     const int size = 5;
     int count = 0;
@@ -20,7 +19,9 @@ int main() {
         arr_1[i] = i;
         arr_2[i] = i;
     }
-   
+    function_values_at_points_xi(1,5,1);
+    //polynomial_value_for_given_value(1,5,6);
+    //solution_of_mathematical_example(1,1,9,0,1);
     //get_first_100_prime_numbers(1,100,0,0);
     //get_first_100_prim444e_numbers(1,0,0);
    // get_first_100_prime_numbers(1,100,0,0);

@@ -133,3 +133,29 @@ int Fib(int n)
         return 1;
     return Fib(n - 1) + Fib(n - 2);
 }
+double determinant_of_polynomial(double x) {
+    return pow(x, 2) + 2 * x + 1;
+}
+double cos_taylor(double x, int n) {
+    double result = 0.0;
+    double sign = 1.0;
+    double power = 1.0;
+    for (int i = 0; i < n; i++) {
+        result += sign * power / tgamma(2 * i + 1) * pow(x, 2 * i + 1);
+        sign *= -1.0;
+        power *= x * x;
+    }
+    return result;
+}
+
+double sin_taylor(double x, int n) {
+    double result = 0.0;
+    double sign = 1.0;
+    double power = x;
+    for (int i = 0; i < n; i++) {
+        result += sign * power / tgamma(2 * i + 2) * pow(x, 2 * i + 1);
+        sign *= -1.0;
+        power *= x * x;
+    }
+    return result;
+}
