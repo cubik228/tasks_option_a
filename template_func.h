@@ -70,3 +70,15 @@ Iterator find_if(Iterator first, Iterator last, UnaryPredecate up) {
 	}
 	return last;
 }
+template <typename Iterator>
+std::vector<double> mergeArrays(Iterator arr1, Iterator arr2, int size1, int size2) {
+	std::vector<double> mergedArr;
+	mergedArr.reserve(size1 + size2);
+	for (int i = 0; i < size1; i++) {
+		mergedArr.push_back(*(arr1 + i));
+	}
+	for (int i = 0; i < size2; i++) {
+		mergedArr.push_back(*(arr2 + i));
+	}
+	return mergedArr;
+}

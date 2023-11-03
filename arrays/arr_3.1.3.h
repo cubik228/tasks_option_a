@@ -1,77 +1,46 @@
 #include <iostream>
-
-template<typename Iterator>
-void zd_1(Iterator arr_first, Iterator arr_second, Iterator size_first, Iterator size_second, int sum, int count) {///(3.1.3)   1 todo
-
-
-    const int size1 = 5;
-    int arr1[size1] = { 1, 2, 3, 4, 5 };
-
-    const int size2 = 4;
-    int arr2[size2] = { -1, -2, 3, -4 };
-
-    const int size3 = size1 + size2;
-    int arr3[size3];
-
-    for (int i = 0; i < size2; i++) {
-        arr3[i] = arr1[i];
-    }
-
-    for (int i = 0; i < size3; i++) {
-        arr3[size1 + i] = arr2[i];
-    }
-
-    for (int i = 0; i < size3; i++) {
-        if (arr3[i] > 0) {
-            sum += arr3[i];
+#include "template_func.h"
+#include <vector>
+template<typename T>
+void pos_num_in_arrays(T arr, T arr2, int size_1, int size_2) {///(3.1.3) 1
+    std::vector<double> mergedArr = mergeArrays(arr, arr2, size_1, size_2);
+    for (auto item : mergedArr)
+    {
+        if (item > 0) {
+            std::cout << item << " ";
         }
     }
-
-    std::cout << "Общий массив: ";
-    for (int i = 0; i < size3; i++) {
-        std::cout << arr3[i] << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << "Сумма положительных элементов: " << sum << std::endl;
-
 }
-void zd_2()///(3.1.3)   2 todo
-{
-    const int size1 = 5;
-    int arr1[size1] = { 1, 2, 3, 4, 5 };
-
-    const int size2 = 4;
-    int arr2[size2] = { -1, -2, 3, -4 };
-
-    const int size3 = size1 + size2;
-    int arr3[size3];
-
-    for (int i = 0; i < size1; i++) {
-        arr3[i] = arr1[i];
-    }
-
-    for (int i = 0; i < size2; i++) {
-        arr3[size1 + i] = arr2[i];
-    }
-
-    int max_negative = INT_MIN;
-    for (int i = 0; i < size3; i++) {
-        if (arr3[i] < 0 && arr3[i] > max_negative) {
-            max_negative = arr3[i];
+template<typename T>
+int maximum_among_negative_elements(T arr, T arr2, int size_1, int size_2,int max_negative) {///(3.1.3) 2
+    std::vector<double> mergedArr = mergeArrays(arr, arr2, size_1, size_2);
+    for (auto item : mergedArr)
+    {
+        if (item < 0 && item > max_negative) {
+            max_negative = item;
         }
     }
-
-    std::cout << "Общий массив: ";
-    for (int i = 0; i < size3; i++) {
-        std::cout << arr3[i] << " ";
+    return max_negative;
+}
+template<typename T>
+int max_sum(T arr, int n) {///(3.1.3) 3
+    int max_sum = arr[0] + arr[n - 1];
+    for (int i = 1; i < n / 2; i++) {
+        int sum = arr[i] + arr[n - i - 1];
+        if (sum > max_sum) {
+            max_sum = sum;
+        }
     }
-    std::cout << std::endl;
-
-    if (max_negative == INT_MIN) {
-        std::cout << "В массиве нет отрицательных элементов." << std::endl;
+    return max_sum;
+}
+template<typename T>
+int min_sum(T arr, int n) {///(3.1.3) 4
+    int min_sum = arr[0] + arr[n - 1];
+    for (int i = 1; i < n / 2; i++) {
+        int sum = arr[i] + arr[n - i - 1];
+        if (sum < min_sum) {
+            min_sum = sum;
+        }
     }
-    else {
-        std::cout << "Максимальный отрицательный элемент: " << max_negative << std::endl;
-    }
+    return min_sum;
 }
