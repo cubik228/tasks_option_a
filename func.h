@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <cmath>
+#include <vector>
+#include <algorithm>
 template<typename T>
 int count_number_size(T value) {
     int count = 0;
@@ -199,4 +201,24 @@ T calculateProduct_product(T begin, T end, T product, T index, T sum) {
         index++;
     }
     return product;
+}
+template<typename T>
+void bubbleSort(std::vector<T>& arr) {
+    int n = arr.size();
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+template <typename T>
+void reverseArray(std::vector<T> arr) {
+    std::reverse(arr.begin(), arr.end());
+    for ( auto element : arr) {
+        std::cout << element << " ";
+    }
 }
